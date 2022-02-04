@@ -1,7 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
+#Author Lenard Röder
+#Version 04.02.2022
 
-#Version 22.10.2021
+#imports
 
 import numpy as np
 from matplotlib import pyplot as plt
@@ -14,10 +14,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 plt.ioff()
 
 
-# ### Constants
-
-
-# ***************
+# *** Constants
 Rmin = 2.15
 Rmax = 19.
 shape = 400
@@ -40,16 +37,9 @@ phi = 45.
 
 # ### Matrix Formalism
 
-
 get_D_matrix = lambda d: np.kron(np.eye(2,dtype=int),np.eye(2) + d * np.eye(2,k=1))
-
-
-#get_R_matrix = lambda Rx, Ry: lag.block_diag(np.eye(2) - 2 / Rx *  np.eye(2,k=-1), np.eye(2) - 2 / Ry * np.eye(2,k=-1))
 get_R_matrix = lambda Rx, Ry: np.array([[1., 0., 0., 0.,],[-2/Rx, 1., 0., 0.], [0.,0.,1.,0.], [0., 0., -2/Ry, 1.]])
-
-
 get_T_matrix = lambda theta: np.cos(theta) * np.eye(4) + np.sin(theta) * (np.eye(4,k=2) - np.eye(4,k=-2))
-
 
 def hz_fast(v0,be,x,y,d,Rx,Ry,theta,phi,max_reflects = [500]):
     X = np.repeat(np.array([[x,np.sin(v0),y,np.sin(be),]]).T[None,:,:],shape,0)
@@ -126,7 +116,6 @@ def get_list_from_csv(csv):
 
 def redraw_ray():
     try:
-        #v0_deg = float(alpha_var.get())
         rx = float(rx_var.get()) + rx_fin.get()
         rx_res_var.set('{:7.2f}'.format(rx))
         ry = float(ry_var.get()) + ry_fin.get()
