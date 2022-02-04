@@ -1,4 +1,4 @@
-#Author Lenard Röder
+#Author Lenard Röder (@lenroed)
 #Version 04.02.2022
 
 #imports
